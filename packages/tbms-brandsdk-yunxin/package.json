@@ -1,6 +1,6 @@
 {
   "name": "tbms-brandsdk-yunxin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "brandsdk, yunxin",
   "author": "",
   "main": "build/index.js",
@@ -26,5 +26,5 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.3.1"
   },
-  "gitHead": "f6647e81f96184d80ba9b798111a5f9c41ce1a5d"
+  "gitHead": "b018ccb4fd48f3ba625602c230dce967e7545f87"
 }
