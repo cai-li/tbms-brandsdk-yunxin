@@ -6,3 +6,20 @@
  * @create: 2018/05
  * ----------------------------------
  */
+
+
+
+const getAccountToken = async (accid: string|number) => {
+  await fetch('https://api.netease.im/nimserver/user/refreshToken.action', {
+    method: 'POST',
+    // headers: {
+    //   "Content-Type": "application/x-www-form-urlencoded"
+    // },
+    body: JSON.stringify({accid: accid})
+  });
+}
+
+
+export {
+  getAccountToken
+}

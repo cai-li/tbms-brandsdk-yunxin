@@ -16,7 +16,8 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "tbms-sdk": "^0.0.1"
+    "tbms-sdk": "*",
+    "tbms-util": "*"
   },
   "devDependencies": {
     "@types/jest": "^23.3.14",
