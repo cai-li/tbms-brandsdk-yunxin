@@ -22,9 +22,9 @@ class default_1 extends tbms_sdk_1.default {
         this.init(options);
     }
     async init(options) {
-        const token = await biz_1.getAccountToken(options.uid);
+        const result = await biz_1.getAccountToken(options.uid);
         this.getInstance(Object.assign(options, {
-            token: token
+            token: result.token
         }));
     }
     getInstance(options) {

@@ -24,9 +24,9 @@ export default class extends TBMS {
   }
 
   async init(options: any) {
-    const token = await getAccountToken(options.uid);
+    const result:any = await getAccountToken(options.uid);
     this.getInstance(Object.assign(options, {
-      token: token
+      token: result.token
     }));
   }
 
