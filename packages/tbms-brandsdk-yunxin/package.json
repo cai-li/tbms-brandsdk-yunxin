@@ -16,6 +16,7 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "sha1": "^1.1.1",
     "tbms-sdk": "*",
     "tbms-util": "*"
   },

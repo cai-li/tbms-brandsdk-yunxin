@@ -20,7 +20,7 @@ export default class extends TBMS {
   constructor(options: any) {
     super(options);
     this.options = options;
-    this.init(this.options);
+    this.init(options);
   }
 
   async init(options: any) {
@@ -29,6 +29,8 @@ export default class extends TBMS {
       token: token
     }));
   }
+
+
 
   getInstance(options: any) {
     this.sdk = NIM.getInstance({
