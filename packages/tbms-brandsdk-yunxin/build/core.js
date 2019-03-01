@@ -23,15 +23,16 @@ class default_1 extends tbms_sdk_1.default {
     }
     async init(options) {
         const result = await biz_1.getAccountToken(options.uid);
-        this.getInstance(Object.assign(options, {
-            token: result.token
-        }));
+        this.getInstance({
+            token: result.info.token,
+            accid: result.info.accid
+        });
     }
     getInstance(options) {
         this.sdk = NIM.getInstance({
-            appkey: constant_1.APP_CONFIG.appkey,
+            appKey: constant_1.APP_CONFIG.appkey,
             token: options.token,
-            account: options.uid,
+            account: options.accid,
             onconnect: (event) => {
                 this.emit(constant_2.MSG_EVENT_CONSTANT.LOGIN_SUCCESS, event);
             },

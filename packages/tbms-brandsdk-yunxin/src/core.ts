@@ -25,18 +25,17 @@ export default class extends TBMS {
 
   async init(options: any) {
     const result:any = await getAccountToken(options.uid);
-    this.getInstance(Object.assign(options, {
-      token: result.token
-    }));
+    this.getInstance({
+      token: result.info.token,
+      accid: result.info.accid
+    });
   }
-
-
 
   getInstance(options: any) {
     this.sdk = NIM.getInstance({
-      appkey: APP_CONFIG.appkey,
+      appKey: APP_CONFIG.appkey,
       token: options.token,
-      account: options.uid,
+      account: options.accid,
       onconnect: (event: any) => {
         this.emit(MSG_EVENT_CONSTANT.LOGIN_SUCCESS, event);
       },

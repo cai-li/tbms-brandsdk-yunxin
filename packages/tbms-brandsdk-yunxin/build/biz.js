@@ -17,7 +17,7 @@ const sha1_1 = __importDefault(require("sha1"));
 const getAccountToken = async (accid) => {
     const time = Math.round(+new Date() / 1000);
     const hash = tbms_util_1._.md5(accid);
-    await fetch('https://api.netease.im/nimserver/user/refreshToken.action', {
+    const response = await fetch('https://api.netease.im/nimserver/user/refreshToken.action', {
         method: 'POST',
         headers: {
             "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -28,5 +28,6 @@ const getAccountToken = async (accid) => {
         },
         body: `accid=${accid}`
     });
+    return response.json();
 };
 exports.getAccountToken = getAccountToken;

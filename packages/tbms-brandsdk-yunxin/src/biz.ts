@@ -13,7 +13,7 @@ import sha1 from 'sha1';
 const getAccountToken = async (accid: string) => {
   const time =Math.round(+new Date() / 1000);
   const hash = _.md5(accid);
-  await fetch('https://api.netease.im/nimserver/user/refreshToken.action', {
+  const response:any = await fetch('https://api.netease.im/nimserver/user/refreshToken.action', {
     method: 'POST',
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -24,6 +24,8 @@ const getAccountToken = async (accid: string) => {
     },
     body: `accid=${accid}`
   });
+
+  return response.json();
 }
 
 
