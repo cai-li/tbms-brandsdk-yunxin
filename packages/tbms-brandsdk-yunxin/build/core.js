@@ -1,4 +1,3 @@
-"use strict";
 /**
  * ----------------------------------
  * @file core.ts
@@ -7,22 +6,19 @@
  * @create: 2018/05
  * ----------------------------------
  */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const tbms_sdk_1 = __importDefault(require("tbms-sdk"));
-const constant_1 = require("./constant");
-const biz_1 = require("./biz");
-const constant_2 = require("tbms-util/build/constant");
-class default_1 extends tbms_sdk_1.default {
+import TBMS from 'tbms-sdk';
+import { Constant } from 'tbms-util';
+import { APP_CONFIG } from './constant';
+import { getAccountToken } from './biz';
+const MSG_EVENT_CONSTANT = Constant.MSG_EVENT_CONSTANT;
+export default class extends TBMS {
     constructor(options) {
         super(options);
         this.options = options;
         this.init(options);
     }
     async init(options) {
-        const result = await biz_1.getAccountToken(options.uid);
+        const result = await getAccountToken(options.uid);
         this.getInstance({
             token: result.info.token,
             accid: result.info.accid
@@ -30,28 +26,27 @@ class default_1 extends tbms_sdk_1.default {
     }
     getInstance(options) {
         this.sdk = NIM.getInstance({
-            appKey: constant_1.APP_CONFIG.appkey,
+            appKey: APP_CONFIG.appkey,
             token: options.token,
             account: options.accid,
             onconnect: (event) => {
-                this.emit(constant_2.MSG_EVENT_CONSTANT.LOGIN_SUCCESS, event);
+                this.emit(MSG_EVENT_CONSTANT.LOGIN_SUCCESS, event);
             },
             onerror: (event) => {
-                this.emit(constant_2.MSG_EVENT_CONSTANT.LOGIN_ERROR, event);
+                this.emit(MSG_EVENT_CONSTANT.LOGIN_ERROR, event);
             },
             onroamingmsgs: (obj) => {
                 const msgs = obj.msgs;
-                this.emit(constant_2.MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, msgs);
+                this.emit(MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, msgs);
             },
             onofflinemsgs: (obj) => {
                 const msgs = obj.msgs;
-                this.emit(constant_2.MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, msgs);
+                this.emit(MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, msgs);
             },
             onmsg: (obj) => {
                 const msgs = obj.msgs;
-                this.emit(constant_2.MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, msgs);
+                this.emit(MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, msgs);
             }
         });
     }
 }
-exports.default = default_1;

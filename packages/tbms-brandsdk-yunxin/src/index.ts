@@ -6,10 +6,11 @@
  * ----------------------------------
  */
 
-import _ from 'tbms-util/build/util';
+import { _, Constant } from 'tbms-util';
 import Core from './core';
-import { MSG_EVENT_CONSTANT } from 'tbms-util/build/constant';
 import { CCOptionsObject } from './global';
+
+const MSG_EVENT_CONSTANT = Constant.MSG_EVENT_CONSTANT;
 export default class {
   private core: any
   private options: CCOptionsObject = {

@@ -8,10 +8,11 @@
  */
 
 import TBMS from 'tbms-sdk';
-import _ from 'tbms-util/util';
+import { _ , Constant } from 'tbms-util';
 import { APP_CONFIG } from './constant';
 import { getAccountToken } from './biz';
-import { MSG_EVENT_CONSTANT } from 'tbms-util/build/constant'
+
+const MSG_EVENT_CONSTANT = Constant.MSG_EVENT_CONSTANT;
 
 declare var NIM: any;
 export default class extends TBMS {

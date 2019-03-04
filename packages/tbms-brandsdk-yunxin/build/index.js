@@ -1,4 +1,3 @@
-"use strict";
 /**
  * ----------------------------------
  * @file index.ts
@@ -6,13 +5,10 @@
  * @author tbms-brandsdk-yunxin
  * ----------------------------------
  */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = __importDefault(require("./core"));
-const constant_1 = require("tbms-util/build/constant");
-class default_1 {
+import { Constant } from 'tbms-util';
+import Core from './core';
+const MSG_EVENT_CONSTANT = Constant.MSG_EVENT_CONSTANT;
+export default class {
     constructor(options) {
         this.options = {
             appkey: "",
@@ -30,26 +26,25 @@ class default_1 {
             onlogin: () => { }
         };
         this.options = options;
-        this.core = new core_1.default(options);
+        this.core = new Core(options);
         this.init();
     }
     init() {
-        this.core.on(constant_1.MSG_EVENT_CONSTANT.RECEIVE_MSG, (msgs) => {
+        this.core.on(MSG_EVENT_CONSTANT.RECEIVE_MSG, (msgs) => {
             msgs.forEach((msg) => {
                 this.core.dispatchMsg(msg);
             });
         });
-        this.core.on(constant_1.MSG_EVENT_CONSTANT.LOGIN_SUCCESS, (event) => {
+        this.core.on(MSG_EVENT_CONSTANT.LOGIN_SUCCESS, (event) => {
             this.core.dispatchLogin(event);
         });
-        this.core.on(constant_1.MSG_EVENT_CONSTANT.LOGIN_ERROR, (event) => {
+        this.core.on(MSG_EVENT_CONSTANT.LOGIN_ERROR, (event) => {
             this.options.onerror(event);
         });
-        this.core.on(constant_1.MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, (msgs) => {
+        this.core.on(MSG_EVENT_CONSTANT.GET_OFFLINE_MSG, (msgs) => {
             msgs.forEach((msg) => {
                 this.core.dispatchOfflineMsg(msg);
             });
         });
     }
 }
-exports.default = default_1;
