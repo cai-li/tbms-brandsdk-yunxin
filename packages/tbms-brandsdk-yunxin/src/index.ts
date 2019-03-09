@@ -36,7 +36,9 @@ export default class {
     this.core.useBatch([messageEncodeFlow, messageDecodeFlow])
     this.init();
   }
-
+  /**
+   * 初始化，事件监听
+   */
   init() {
     this.core.on(MSG_EVENT_CONSTANT.RECEIVE_MSG, (msg: any) => {
       this.core.dispatchMsg(msg);
@@ -64,7 +66,8 @@ export default class {
   getHistoryMessage(options: any) {
     this.core.getOfflineMessage(merge({
       to: this.options.touid,
-      scene: 'p2p'
+      scene: 'p2p',
+      limit: 20
     }, options,  {
       done: (err: any, obj: any) => {
         if (err) {
