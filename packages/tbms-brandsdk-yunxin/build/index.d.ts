@@ -10,4 +10,14 @@ export default class {
     private options;
     constructor(options: any);
     init(): void;
+    /**
+     * 获取离线消息
+     * @param options
+     */
+    getHistoryMessage(options: any): void;
+    /**
+     * 发送实时消息
+     * @param data
+     */
+    sendMsg(data: any): void;
 }

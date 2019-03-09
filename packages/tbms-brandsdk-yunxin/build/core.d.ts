@@ -7,9 +7,21 @@
  * ----------------------------------
  */
 import TBMS from 'tbms-sdk';
+import { ContextObject, IJSONObject } from './global';
 export default class extends TBMS {
     private sdk?;
+    conversation: IJSONObject;
+    user: IJSONObject;
     constructor(options: any);
     init(options: any): Promise<void>;
+    /**
+   * @override handleContextExternal
+   * @desc 子类复写，更改执行上下文
+   * @param ctx 上下文变量更改
+   * @param val
+   */
+    handleContextExternal(ctx: ContextObject, val: ContextObject): ContextObject;
     getInstance(options: any): void;
+    sendText(options: any): void;
+    getOfflineMessage(options: any): void;
 }
