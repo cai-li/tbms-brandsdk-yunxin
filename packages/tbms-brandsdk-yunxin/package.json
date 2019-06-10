@@ -1,6 +1,6 @@
 {
   "name": "tbms-brandsdk-yunxin",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "brandsdk, yunxin",
   "author": "",
   "main": "build/index.js",
