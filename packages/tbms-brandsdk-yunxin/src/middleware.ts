@@ -23,17 +23,6 @@ export const messageDecodeFlow = function(ctx:any, next:any) {
           content: message.text
         });
         break;
-      case 1: // 图片消息
-        // const imageInfo = _.getImageDimension(message.msg) // async promise return,  please use next()
-        // merge(message, {
-        //   type: 'image',
-        //   file: {
-        //     url: message.msg,
-        //     h: imageInfo.height ? imageInfo.height : ImageRectangle,
-        //     w: imageInfo.width ? imageInfo.width : ImageRectangle
-        //   }
-        // })
-        break;
       default:
         merge(message, {
           type: 'text',
